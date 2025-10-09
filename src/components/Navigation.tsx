@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 interface NavigationProps {
   activeCategory: string;
   onCategoryChange: (category: string) => void;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { MenuItem as MenuItemType } from '../types';
+import { useScrollAnimation } from '../scripts/menuItem';
 
 interface MenuItemProps {
   item: MenuItemType;
@@ -7,17 +8,18 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
   const [showNutrition, setShowNutrition] = useState<boolean>(false);
+    const itemRef = useScrollAnimation();
 
   return (
-    <div className="point">
+    <div  ref={itemRef} className="point" style={{ opacity: 0, transform: 'translateY(30px)' }}>
       <div>
-        <img className="imgMenu" src={item.image} alt={item.name} />
+        <img  className="imgMenu" src={item.image} alt={item.name} />
       </div>
-      <div className="tMenu">
-        <div className="nazvanie">
+      <div  className="tMenu">
+        <div  className="nazvanie">
           <p>{item.name}</p>
           <div className="line">
-            <div className="logoInfo">
+            <div  className="logoInfo">
               <p 
                 className="btnInfo" 
                 onMouseEnter={() => setShowNutrition(true)}

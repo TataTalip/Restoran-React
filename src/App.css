@@ -168,18 +168,24 @@ h4 {
   width: 50px;
 }
 
+.floating-image{
+ 
+ right: 20px;
+}
+
  
 .container {
- 
+ margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url("https://cdn.glitch.global/d3566cfd-bd84-4909-8f8b-c888cca25575/phone2.jpg?v=1724008873651");
+
   background-size:cover ;
   background-position: center;
   background-attachment: fixed;
-   position: relative
+ 
 }
  
 .meal {
