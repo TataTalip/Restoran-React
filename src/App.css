@@ -45,10 +45,13 @@ header {
   text-transform: uppercase;
   transition: 0.5s;
   margin-left: 10px;
+ 
+  color: #2d3748;
 }
 
 .logo:hover {
   transform: scale(1.4);
+  opacity: 1;
 }
 
 nav ul li {
@@ -234,12 +237,9 @@ h1 {
 
 div a {
   text-decoration: none;
-  color: white;
+ 
 }
 
-div a:hover {
-  color: white;
-}
 
 div a:active {
   color: black;
@@ -477,7 +477,7 @@ select {
   color: black;
 }
 .logoInfo {
-  width: 25px;
+  width: 35px;
 }
 
 .popup {
@@ -520,10 +520,13 @@ select {
 
 @media screen and (max-width: 1000px) {
   header {
-    position: relative;
+    position: fixed;
     padding: 0;
+    display: flex;
+    justify-content: center;
+  
   }
-
+ 
   .name_tel {
     display: flex;
     flex-wrap: wrap;
