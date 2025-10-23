@@ -11,42 +11,53 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ show, onHide }) => 
     message: ''
   });
 
-  const [telefoneMask, setTelefoneMask] = useState('');
+  // Маска для телефона - теперь вычисляемое значение
+  const telefoneMask = applyPhoneMask(formData.telefone);
 
   // Маска для телефона
-  const applyPhoneMask = (value: string): string => {
+  function applyPhoneMask(value: string): string {
     const numbers = value.replace(/\D/g, '');
+    
+    // Если номер начинается не с 7 или 8, добавляем 7
+    let cleanNumbers = numbers;
+    if (cleanNumbers.length > 0 && cleanNumbers[0] === '8') {
+      cleanNumbers = '7' + cleanNumbers.substring(1);
+    }
+    if (cleanNumbers.length > 0 && cleanNumbers[0] !== '7') {
+      cleanNumbers = '7' + cleanNumbers;
+    }
+    
     let formattedValue = '+7 ';
     
-    if (numbers.length > 0) {
-      formattedValue += '(' + numbers.substring(1, 4);
+    if (cleanNumbers.length > 1) {
+      formattedValue += '(' + cleanNumbers.substring(1, 4);
     }
-    if (numbers.length >= 4) {
-      formattedValue += ') ' + numbers.substring(4, 7);
+    if (cleanNumbers.length >= 4) {
+      formattedValue += ') ' + cleanNumbers.substring(4, 7);
     }
-    if (numbers.length >= 7) {
-      formattedValue += '-' + numbers.substring(7, 9);
+    if (cleanNumbers.length >= 7) {
+      formattedValue += '-' + cleanNumbers.substring(7, 9);
     }
-    if (numbers.length >= 9) {
-      formattedValue += '-' + numbers.substring(9, 11);
+    if (cleanNumbers.length >= 9) {
+      formattedValue += '-' + cleanNumbers.substring(9, 11);
     }
     
     return formattedValue;
-  };
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     
     if (name === 'telefone') {
-      // Применяем маску для телефона
-      const maskedValue = applyPhoneMask(value);
-      setTelefoneMask(maskedValue);
-      
-      // Сохраняем только цифры в formData
+      // Убираем все нецифровые символы
       const numbersOnly = value.replace(/\D/g, '');
+      
+      // Ограничиваем длину (11 цифр включая 7)
+      const limitedNumbers = numbersOnly.substring(0, 11);
+      
       setFormData(prev => ({
         ...prev,
-        [name]: numbersOnly
+        [name]: limitedNumbers
       }));
     } else {
       setFormData(prev => ({
@@ -59,16 +70,17 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ show, onHide }) => 
   // Валидация имени
   const isValidName = (name: string): boolean => {
     const pattern = /^[A-Za-zА-Яа-яЁё\s-]+$/;
-    return pattern.test(name);
+    return pattern.test(name.trim());
   };
 
-  // Валидация телефона
+  // Валидация телефона - теперь проще
   const isValidPhone = (phone: string): boolean => {
     return phone.replace(/\D/g, '').length === 11;
   };
 
   // Валидация даты
   const isValidDate = (date: string): boolean => {
+    if (!date) return false;
     const selectedDate = new Date(date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -78,14 +90,14 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ show, onHide }) => 
   // Валидация количества гостей
   const isValidGuests = (guests: string): boolean => {
     const count = parseInt(guests);
-    return count >= 1 && count <= 10;
+    return !isNaN(count) && count >= 1 && count <= 10;
   };
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     
     // Валидация
-    if (!formData.name || !formData.telefone || !formData.date || !formData.countG) {
+    if (!formData.name.trim() || !formData.telefone || !formData.date || !formData.countG) {
       alert('Пожалуйста, заполните все обязательные поля');
       return;
     }
@@ -96,7 +108,7 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ show, onHide }) => 
     }
 
     if (!isValidPhone(formData.telefone)) {
-      alert('Телефон введен некорректно');
+      alert('Телефон должен содержать 11 цифр');
       return;
     }
 
@@ -130,7 +142,6 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ show, onHide }) => 
       countG: '',
       message: ''
     });
-    setTelefoneMask('');
   };
 
   // Очищаем форму при закрытии модального окна
@@ -178,9 +189,13 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ show, onHide }) => 
                     onChange={handleChange}
                     required
                   />
+                  <small style={{fontSize: '10px', color: '#666'}}>
+                    Введите 11 цифр: {formData.telefone.length}/11
+                  </small>
                 </div>
               </div>
 
+              {/* Остальной код без изменений */}
               <div className="form-group">
                 <label htmlFor="date">Дата:* </label>
                 <input 
