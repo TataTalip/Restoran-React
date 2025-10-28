@@ -561,6 +561,7 @@ select {
     flex-wrap: wrap;
     margin: 40px;
     width: 90vw;
+     scroll-margin-top: 90px;
   }
   .item {
     margin: 5px;
@@ -573,4 +574,14 @@ select {
   .item:hover > .descr {
     display: none;
   }
+
+  #breakfast,
+#lunch,
+#dinner,
+#dessert,
+#drinks,
+#contactUs {
+  padding-top: 90px;
+ 
+}
 }
