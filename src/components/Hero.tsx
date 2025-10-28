@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
        <p ref ={titleRef}  className="desc-script-test">Где каждое блюдо - это искусство, а каждый прием пищи - церемония</p>
       </div>
       <div className="main_dop">
-        <img className="main_img" src='../public/свет-тень.png'></img>
+        <img className="main_img" src='свет-тень.png'></img>
         {/* <img className="main_img" src='../public/mainImg2-Photoroom.png'></img> */}
       </div>
       
