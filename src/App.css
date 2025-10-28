@@ -93,18 +93,28 @@ div ul li a:hover {
   text-indent: initial;
   transition: 0.5s ease;
   display: flex;
- 
- 
   flex-wrap: wrap;
-  
+  background-color: white;
+ scroll-margin-top: 35px;
 }
 
  
-
+#breakfast,
+#lunch,
+#dinner,
+#dessert,
+#drinks,
+#contactUs {
+  padding-top: 60px;
+  margin-top: -55px;
+  -webkit-background-clip: content-box;
+  background-clip: content-box;
+  font-weight: 700;
+}
  
 
 .item {
-  height: clamp(3.125rem, -0.859rem + 21.98vw, 15.625rem); /* 50-250px*/
+  /* height: clamp(3.125rem, -0.859rem + 21.98vw, 15.625rem); 50-250px */
   background-size: cover;
   background-position: center;
   font-family: "Dancing Script", cursive;
@@ -115,10 +125,22 @@ div ul li a:hover {
   flex-direction: column;
  font-size:2rem;
  margin-bottom: 12px; 
- font-weight: 700;
+ 
+ 
  color:#2d3748;
+margin-left: 1px;
+ border: 1px solid #ed8936;
+ border-radius: 5px;
                 
 }
+
+.item:hover {
+  /* Цвет при наведении курсора */
+  background-color: #ed8936;
+  color: aliceblue;
+}
+
+ 
 /* Стили для секций меню с фоном */
 .menu-section {
   position: relative;
@@ -245,18 +267,7 @@ div a:active {
   color: black;
 }
 
-#breakfast,
-#lunch,
-#dinner,
-#dessert,
-#drinks,
-#contactUs {
-  padding-top: 60px;
-  margin-top: -55px;
-  -webkit-background-clip: content-box;
-  background-clip: content-box;
-  font-weight: 700;
-}
+
 
 .menu {
   display: flex;
@@ -524,6 +535,7 @@ select {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   
   }
  

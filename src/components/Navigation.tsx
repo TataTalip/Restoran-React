@@ -23,7 +23,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeCategory, onCategoryChang
           key={category.id}
           className={`item ${activeCategory === category.id ? 'selected' : ''}`}
           onClick={() => onCategoryChange(category.id)}
-          style={{ backgroundImage: `url(${category.image})`}}
+          
         >
       
           <div className="">
