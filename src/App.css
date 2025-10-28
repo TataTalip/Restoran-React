@@ -1,6 +1,4 @@
 * {
-  margin: 0;
-  padding: 0;
   list-style: none;
   text-decoration: none;
 }
@@ -11,12 +9,13 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   height: clamp(
     15.625rem,
     4.67rem + 60.44vw,
     50rem
   ); /*800px  clamp(18.125rem, 7.967rem + 56.04vw, 50rem)*/
-  background-image: url("https://cdn.glitch.global/d3566cfd-bd84-4909-8f8b-c888cca25575/mainImg2.jpg?v=1722783625786");
+  /* background-image: url("https://cdn.glitch.global/d3566cfd-bd84-4909-8f8b-c888cca25575/mainImg2.jpg?v=1722783625786"); */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -45,7 +44,6 @@ header {
   text-transform: uppercase;
   transition: 0.5s;
   margin-left: 10px;
- 
   color: #2d3748;
 }
 
@@ -85,20 +83,48 @@ div ul li a:hover {
 }
 
 .menuMain {
- 
-    font-size: 50px;
+  font-size: 50px;
   font-weight: 700;
   font-family: "Segoe UI";
   text-align: center;
   text-indent: initial;
   transition: 0.5s ease;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: white;
- scroll-margin-top: 35px;
+  scroll-margin-top: 35px;
 }
 
- 
+.item {
+  /* height: clamp(3.125rem, -0.859rem + 21.98vw, 15.625rem); 50-250px */
+  background-size: cover;
+  background-position: center;
+  font-family: "Dancing Script", cursive;
+  margin-top: 30px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #2d3748;
+  margin-left: 1px;
+  border: 1px solid #ed8936;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.item:hover {
+  /* Цвет при наведении курсора */
+  background-color: #ed8936;
+  color: aliceblue;
+}
+
 #breakfast,
 #lunch,
 #dinner,
@@ -111,36 +137,7 @@ div ul li a:hover {
   background-clip: content-box;
   font-weight: 700;
 }
- 
 
-.item {
-  /* height: clamp(3.125rem, -0.859rem + 21.98vw, 15.625rem); 50-250px */
-  background-size: cover;
-  background-position: center;
-  font-family: "Dancing Script", cursive;
-  margin-top: 30px;
-    
-  width: 250px;
-  display: flex;
-  flex-direction: column;
- font-size:2rem;
- margin-bottom: 12px; 
- 
- 
- color:#2d3748;
-margin-left: 1px;
- border: 1px solid #ed8936;
- border-radius: 5px;
-                
-}
-
-.item:hover {
-  /* Цвет при наведении курсора */
-  background-color: #ed8936;
-  color: aliceblue;
-}
-
- 
 /* Стили для секций меню с фоном */
 .menu-section {
   position: relative;
@@ -151,7 +148,7 @@ margin-left: 1px;
 }
 
 .menu-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -193,32 +190,25 @@ h4 {
   width: 50px;
 }
 
-.floating-image{
- 
- right: 20px;
+.floating-image {
+  right: 20px;
 }
 
- 
 .container {
- margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url("https://cdn.glitch.global/d3566cfd-bd84-4909-8f8b-c888cca25575/phone2.jpg?v=1724008873651");
-
-  background-size:cover ;
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
- 
 }
- 
+
 .meal {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
- 
 }
 
 h1 {
@@ -231,43 +221,53 @@ h1 {
 
 .main {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: clamp(1.875rem, -0.17rem + 10.23vw, 7.5rem);
-  height: clamp(9.375rem, -1.58rem + 60.44vw, 43.75rem);
-  /*150-700px*/
+  min-height: 90vh;
+  padding-top: 80px; /* Высота header'а */
+  box-sizing: border-box; /* Важно! */
+  background-color: #2c5530;
+  padding: 30px;
 }
 
 .textMain {
-  color: white;
-  font-size: clamp(1.25rem, 0.951rem + 1.65vw, 2.188rem); /*50px*/
+  color: #94cc9a;
+  font-size:  clamp(1.25rem, 1.0417rem + 1.1111vw, 1.875rem);; /*30px*/
   font-family: "Inter", sans-serif;
   font-weight: 900;
-  text-align: center;
+ 
+ 
 }
 
 .dancing-script-test {
   font-family: "Dancing Script", cursive;
   font-optical-sizing: auto;
   font-weight: 500;
-  font-size: clamp(3.75rem, 2.386rem + 6.82vw, 7.5rem); /*60 - 120px*/
+  font-size: clamp(1.875rem, 1.1458rem + 3.8889vw, 4.0625rem);/*60 - 65px*/
   font-style: normal;
-  color: white;
-  border-bottom: 6px white solid;
-}
-
-div a {
-  text-decoration: none;
+  color: #e6d2b3; 
  
 }
 
+.desc-script-test {
+  font-size: clamp(1.5625rem, 1.3542rem + 1.1111vw, 2.1875rem); /*60 - 35px*/
+  font-style: normal;
+    color: #94cc9a;
+ 
+}
+
+.main_img {
+  width:clamp(18.75rem, 10.8333rem + 42.2222vw, 42.5rem);/*- 680px*/
+  filter: drop-shadow(0 0 10px rgb(43, 43, 43));
+   
+}
+div a {
+  text-decoration: none;
+}
 
 div a:active {
   color: black;
 }
-
-
 
 .menu {
   display: flex;
@@ -285,16 +285,13 @@ div a:active {
   background-color: white;
   border: 2px solid black;
 }
- 
-
-
 
 .point {
   width: 280px;
   margin: 17px;
   display: flex;
   flex-direction: column;
-    background-color: white;
+  background-color: white;
 }
 
 .point:hover {
@@ -529,16 +526,15 @@ select {
   opacity: 1;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   header {
     position: fixed;
     padding: 0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-  
   }
- 
+
   .name_tel {
     display: flex;
     flex-wrap: wrap;
@@ -561,7 +557,7 @@ select {
     flex-wrap: wrap;
     margin: 40px;
     width: 90vw;
-     scroll-margin-top: 90px;
+    scroll-margin-top: 90px;
   }
   .item {
     margin: 5px;
@@ -576,12 +572,14 @@ select {
   }
 
   #breakfast,
-#lunch,
-#dinner,
-#dessert,
-#drinks,
-#contactUs {
-  padding-top: 90px;
- 
-}
+  #lunch,
+  #dinner,
+  #dessert,
+  #drinks,
+  #contactUs {
+    padding-top: 90px;
+  }
+  .main_dop {
+    display: none;
+  }
 }

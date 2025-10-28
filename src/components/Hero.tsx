@@ -10,9 +10,16 @@ const Hero: React.FC = () => {
 
   return (
     <div className="main">
-      <p ref ={textRef} className="textMain">Добро пожаловать в</p>
+      <div>
+        <p ref ={textRef} className="textMain">Погрузитесь в мир восточной гармонии</p>
       <p ref ={titleRef}  className="dancing-script-test">Asiana kitchen</p>
-
+       <p ref ={titleRef}  className="desc-script-test">Где каждое блюдо - это искусство, а каждый прием пищи - церемония</p>
+      </div>
+      <div className="main_dop">
+        <img className="main_img" src='../public/свет-тень.png'></img>
+        {/* <img className="main_img" src='../public/mainImg2-Photoroom.png'></img> */}
+      </div>
+      
        
     </div>
   );
